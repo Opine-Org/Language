@@ -1,0 +1,25 @@
+{
+    "name": "opine/language",
+    "type": "library",
+    "minimum-stability": "dev",
+    "description": "Service for maintaining the current language of a multilingual web project.",
+    "keywords": ["multilingual"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Mahoney",
+            "email": "ryan@virtuecenter.com",
+            "homepage": "http:\/\/opine-php.org",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "phpunit\/phpunit": "3.7.32",
+        "opine\/db": "dev-master",
+        "opine\/container": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {"Opine\\Language\\": "src\/"}
+    }
+}
