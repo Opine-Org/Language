@@ -61,7 +61,11 @@ class Service {
         return $this->languages[$this->language];
     }
 
-    public function cacheSet (Array $languages) {
+    public function cacheSet ($languages) {
+        if (!is_array($languages)) {
+            $this->languages = [];
+            return;
+        }
         $this->languages = $languages;
     }
 
