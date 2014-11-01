@@ -52,4 +52,11 @@ class Model {
         }
         return $cache;
     }
+
+    public function readDiskCache () {
+        if (!file_exists($this->cacheFile)) {
+            return [];
+        }
+        return json_decode(file_get_contents($this->cacheFile), true);
+    }
 }

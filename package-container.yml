@@ -1,6 +1,7 @@
 services:
     language:
         class: 'Opine\Language\Service'
+        arguments: ['@languageModel']
     languageModel:
         class: 'Opine\Language\Model'
         arguments: ['%root%', '@db']

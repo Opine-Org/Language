@@ -28,6 +28,11 @@ use Exception;
 class Service {
     private $languages = [];
     private $language = NULL;
+    private $model;
+
+    public function __construct ($model) {
+        $this->model = $model;
+    }
 
     public function pathEvaluate ($path) {
         if (!is_string($path)) {
@@ -62,8 +67,8 @@ class Service {
     }
 
     public function cacheSet ($languages) {
-        if (!is_array($languages)) {
-            $this->languages = [];
+        if (empty($languages)) {
+            $this->languages = $this->model->readDiskCache();
             return;
         }
         $this->languages = $languages;
