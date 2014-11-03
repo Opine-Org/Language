@@ -42,7 +42,7 @@ class Model {
     }
 
     private function read () {
-        $languages = $this->db->collection('lanuages')->find();
+        $languages = iterator_to_array($this->db->collection('languages')->find());
         if (!is_array($languages) || count($languages) == 0) {
             return [];
         }
