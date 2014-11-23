@@ -1,6 +1,9 @@
 <?php
 namespace Opine;
+
 use PHPUnit_Framework_TestCase;
+use Opine\Config\Service as Config;
+use Opine\Container\Service as Container;
 
 class LanguageTest extends PHPUnit_Framework_TestCase {
     private $language;
@@ -8,9 +11,10 @@ class LanguageTest extends PHPUnit_Framework_TestCase {
     private $languages;
 
     public function setup () {
-        date_default_timezone_set('UTC');
         $this->root = __DIR__ . '/../public';
-        $container = new Container($this->root, $this->root . '/../container.yml');
+        $config = new Config($this->root);
+        $config->cacheSet();
+        $container = new Container($this->root, $config, $this->root . '/../container.yml');
         $this->language = $container->language;
         $this->languageModel = $container->languageModel;
         $this->languages = [
