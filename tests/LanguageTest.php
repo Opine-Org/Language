@@ -14,7 +14,7 @@ class LanguageTest extends PHPUnit_Framework_TestCase {
         $this->root = __DIR__ . '/../public';
         $config = new Config($this->root);
         $config->cacheSet();
-        $container = Container::instance($this->root, $config, $this->root . '/../container.yml');
+        $container = Container::instance($this->root, $config, $this->root . '/../config/container.yml');
         $this->language = $container->language;
         $this->languageModel = $container->languageModel;
         $this->languages = [
@@ -55,7 +55,7 @@ class LanguageTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testBuild () {
-        $cacheFile = $this->root . '/../cache/languages.json';
+        $cacheFile = $this->root . '/../var/cache/languages.json';
         $this->languageModel->build();
         $this->assertTrue(file_exists($cacheFile));
         $this->assertTrue(is_array(json_decode(file_get_contents($cacheFile), true)));
