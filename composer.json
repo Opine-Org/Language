@@ -16,10 +16,11 @@
     "require": {
         "php"            : ">=5.4.0",
         "phpunit/phpunit": "3.7.32",
-        "opine/db"       : "dev-master",
-        "opine/container": "2.0.2"
+        "opine/db"       : "2.0.0",
+        "opine/container": "2.0.3"
     },
     "autoload": {
         "psr-4": {"Opine\\Language\\": "src/"}
-    }
+    },
+    "version": "2.0.0"
 }
