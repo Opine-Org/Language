@@ -1,7 +1,6 @@
 {
     "name": "opine/language",
     "type": "library",
-    "minimum-stability": "dev",
     "description": "Service for maintaining the current language of a multilingual web project.",
     "keywords": ["multilingual"],
     "license": "MIT",
@@ -16,11 +15,11 @@
     "require": {
         "php"            : ">=5.4.0",
         "phpunit/phpunit": "3.7.32",
-        "opine/db"       : "2.0.0",
-        "opine/container": "2.0.3"
+        "opine/db"       : "2.0.1",
+        "opine/container": "2.0.4"
     },
     "autoload": {
         "psr-4": {"Opine\\Language\\": "src/"}
     },
-    "version": "2.0.0"
+    "version": "2.0.1"
 }
