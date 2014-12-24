@@ -10,10 +10,10 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,18 +23,22 @@
  * THE SOFTWARE.
  */
 namespace Opine\Language;
+
 use Exception;
 
-class Service {
+class Service
+{
     private $languages = [];
-    private $language = NULL;
+    private $language = null;
     private $model;
 
-    public function __construct ($model) {
+    public function __construct($model)
+    {
         $this->model = $model;
     }
 
-    public function pathEvaluate ($path) {
+    public function pathEvaluate($path)
+    {
         if (!is_string($path)) {
             throw new Exception('Invalid path format');
         }
@@ -48,37 +52,46 @@ class Service {
             return $path;
         }
         $this->language = $language;
-        return '/' . implode('/', $parts);
+
+        return '/'.implode('/', $parts);
     }
 
-    public function set ($language) {
+    public function set($language)
+    {
         $this->language = $language;
     }
 
-    public function get () {
+    public function get()
+    {
         return $this->language;
     }
 
-    public function getDetails () {
-        if ($this->language === NULL) {
+    public function getDetails()
+    {
+        if ($this->language === null) {
             return false;
         }
+
         return $this->languages[$this->language];
     }
 
-    public function cacheSet ($languages) {
+    public function cacheSet($languages)
+    {
         if (empty($languages)) {
             $this->languages = $this->model->readDiskCache();
+
             return;
         }
         $this->languages = $languages;
     }
 
-    public function cacheClear () {
+    public function cacheClear()
+    {
         $this->languages = [];
     }
 
-    public function languages () {
+    public function languages()
+    {
         return $this->languages;
     }
 }

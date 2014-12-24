@@ -24,24 +24,29 @@
  */
 namespace Opine\Language;
 
-class Model {
+class Model
+{
     private $root;
     private $db;
     private $cacheFile;
 
-    public function __construct ($root, $db) {
+    public function __construct($root, $db)
+    {
         $this->root = $root;
         $this->db = $db;
-        $this->cacheFile = $root . '/../var/cache/languages.json';
+        $this->cacheFile = $root.'/../var/cache/languages.json';
     }
 
-    public function build () {
+    public function build()
+    {
         $cache = $this->read();
         file_put_contents($this->cacheFile, json_encode($cache, JSON_PRETTY_PRINT));
+
         return json_encode($cache);
     }
 
-    private function read () {
+    private function read()
+    {
         $languages = iterator_to_array($this->db->collection('languages')->find());
         if (!is_array($languages) || count($languages) == 0) {
             return [];
@@ -50,13 +55,16 @@ class Model {
         foreach ($languages as $language) {
             $cache[$language['code_name']] = $language;
         }
+
         return $cache;
     }
 
-    public function readDiskCache () {
+    public function readDiskCache()
+    {
         if (!file_exists($this->cacheFile)) {
             return [];
         }
+
         return json_decode(file_get_contents($this->cacheFile), true);
     }
 }
