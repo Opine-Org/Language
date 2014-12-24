@@ -14,7 +14,7 @@ class LanguageTest extends PHPUnit_Framework_TestCase {
         $this->root = __DIR__ . '/../public';
         $config = new Config($this->root);
         $config->cacheSet();
-        $container = Container::instance($this->root, $config, $this->root . '/../config/container.yml');
+        $container = Container::instance($this->root, $config, $this->root . '/../config/containers/test-container.yml');
         $this->language = $container->language;
         $this->languageModel = $container->languageModel;
         $this->languages = [
